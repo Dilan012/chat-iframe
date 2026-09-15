@@ -1,0 +1,9 @@
+services:
+  chat-iframe:
+    build: .
+    container_name: thingsboard-iframe-chat
+    ports:
+      - "6000:6000"
+    environment:
+      - PORT=6000
+    restart: unless-stopped
