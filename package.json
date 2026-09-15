@@ -1,0 +1,16 @@
+{
+  "name": "thingsboard-iframe",
+  "version": "1.0.0",
+  "description": "Demo AI chat widget served as an embeddable iframe for ThingsBoard dashboards",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
