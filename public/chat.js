@@ -3,12 +3,31 @@ const input = document.getElementById('chat-text');
 const messages = document.getElementById('messages');
 
 function addMessage(text, sender) {
-  const el = document.createElement('div');
-  el.className = `msg ${sender}`;
-  el.textContent = text;
-  messages.appendChild(el);
+  const row = document.createElement('div');
+  row.className = `msg-row ${sender}`;
+
+  const bubble = document.createElement('div');
+  bubble.className = `msg ${sender}`;
+  bubble.textContent = text;
+
+  row.appendChild(bubble);
+  messages.appendChild(row);
   messages.scrollTop = messages.scrollHeight;
-  return el;
+  return row;
+}
+
+function addTypingIndicator() {
+  const row = document.createElement('div');
+  row.className = 'msg-row bot';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg bot typing';
+  bubble.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+
+  row.appendChild(bubble);
+  messages.appendChild(row);
+  messages.scrollTop = messages.scrollHeight;
+  return row;
 }
 
 form.addEventListener('submit', async (e) => {
@@ -19,7 +38,7 @@ form.addEventListener('submit', async (e) => {
   addMessage(text, 'user');
   input.value = '';
 
-  const typingEl = addMessage('Typing...', 'bot typing');
+  const typingRow = addTypingIndicator();
 
   try {
     const res = await fetch('/api/chat', {
@@ -29,7 +48,7 @@ form.addEventListener('submit', async (e) => {
     });
 
     const data = await res.json();
-    typingEl.remove();
+    typingRow.remove();
 
     if (!res.ok) {
       addMessage(data.error || 'Something went wrong.', 'bot');
@@ -38,7 +57,7 @@ form.addEventListener('submit', async (e) => {
 
     addMessage(data.reply, 'bot');
   } catch (err) {
-    typingEl.remove();
+    typingRow.remove();
     addMessage('Error contacting server.', 'bot');
   }
 });

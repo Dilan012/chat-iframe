@@ -4,17 +4,36 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AI Chat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="chat-widget">
-    <div class="chat-header">AI Assistant</div>
+    <div class="chat-header">
+      <div class="avatar">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2a10 10 0 100 20 10 10 0 000-20zM8 10.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm8 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm-8.5 5.2c.9 1 2.2 1.6 3.5 1.6s2.6-.6 3.5-1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="header-text">
+        <div class="header-title">AI Assistant</div>
+        <div class="header-status"><span class="status-dot"></span>Online</div>
+      </div>
+    </div>
     <div class="chat-messages" id="messages">
-      <div class="msg bot">Hi! How can I help you today?</div>
+      <div class="msg-row bot">
+        <div class="msg bot">Hi! How can I help you today?</div>
+      </div>
     </div>
     <form class="chat-input" id="chat-form">
       <input type="text" id="chat-text" placeholder="Type a message..." autocomplete="off" />
-      <button type="submit">Send</button>
+      <button type="submit" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.4 20.6l17.45-8.3a.6.6 0 000-1.08L3.4 2.9a.6.6 0 00-.85.67L4.8 12l-2.25 8.02a.6.6 0 00.85.58z" fill="currentColor"/>
+        </svg>
+      </button>
     </form>
   </div>
   <script src="chat.js"></script>
